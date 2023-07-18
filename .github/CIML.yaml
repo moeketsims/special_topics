@@ -2,6 +2,8 @@ name: Run R script
 
 on:
   push:
+    branches:
+      - actions
 
 jobs:
   run-script:
