@@ -1,10 +1,9 @@
 name: my-CIML
 on: [push]
 permissions:
-  id-token: write
   contents: write
   security-events: write
-  repo: write
+
 jobs:
   run:
     runs-on: ubuntu-latest
