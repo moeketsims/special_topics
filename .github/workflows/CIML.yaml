@@ -23,6 +23,5 @@ jobs:
 
           # Post reports as comments in GitHub PRs
           # cat results.txt >> report.md
-          # cml comment create report.md
-
+          # cml send-comment report.md
           cml comment create report.md
