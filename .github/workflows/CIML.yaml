@@ -19,7 +19,6 @@ jobs:
       - name: Install dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          install-packages: true
           extra-packages: 'tidyverse tidymodels vip'
 
       - name: Run script
