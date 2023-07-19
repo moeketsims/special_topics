@@ -25,4 +25,4 @@ jobs:
             any::vip
 
       - name: Run script
-        run: Rscript -e source("script.R")
+        run: Rscript -e s'ource("script.R")'
