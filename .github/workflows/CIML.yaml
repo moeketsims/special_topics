@@ -18,6 +18,4 @@ jobs:
           python modeling_script.py
           echo "## Model metrics" > report.md
           cat results.txt >> report.md
-
-
           cml comment create report.md
