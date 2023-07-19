@@ -1,15 +1,10 @@
-name: my-CIML
-on: [push]
-
 jobs:
   run:
     runs-on: ubuntu-latest
     container: docker://dvcorg/cml-py3:latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup CML
-        run: |
-          curl -s https://cml.dev/install.sh | sudo bash
+      - uses: iterative/setup-cml@v1
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -20,8 +15,4 @@ jobs:
           python modeling_script.py
           echo "## Model metrics" > report.md
           cat results.txt >> report.md
-
-          # Post reports as comments in GitHub PRs
-          # cat results.txt >> report.md
-          # cml send-comment report.md
           cml comment create report.md
