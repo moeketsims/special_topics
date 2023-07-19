@@ -16,13 +16,10 @@ jobs:
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
 
-      - name: Set up R
-        uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages:
-            any::tidyverse
-            any::tidymodels
-            any::vip
+      - name: Install dependencies
+        run: |
+          Rscript -e 'options(repos = "https://packagemanager.rstudio.com/cran/latest")'
+          Rscript -e 'install.packages(c("tidyverse", "tidymodels", "vip"))'
 
       - name: Run script
-        run: Rscript -e s'ource("script.R")'
+        run: Rscript -e 'source("script.R")'
