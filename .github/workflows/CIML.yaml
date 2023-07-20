@@ -1,0 +1,24 @@
+name: my-CIML
+on: [push]
+permissions:
+    id-token: write
+    contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    container: docker://dvcorg/cml-py3:latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: iterative/setup-cml@v1
+      - name: Train model
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Your ML workflow goes here
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python modeling_script.py
+          echo "## Model metrics" > report.md
+          cat results.txt >> report.md
+          # cml comment create report.md
